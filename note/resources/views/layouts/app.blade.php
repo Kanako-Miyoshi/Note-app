@@ -95,7 +95,7 @@
             </div>
             <div class="col-md-4 p-0">
               <div class="card h-100">
-                <div class="card-header d-flex">メモ一覧 <a class='ml-auto' href='/create'><i class="fas fa-plus-circle"></i></a></div>
+                <div class="card-header d-flex">メモ一覧あ <a class='ml-auto' href='/create'><i class="fas fa-plus-circle"></i></a></div>
                 <div class="card-body p-2">
 
                   <a href="/edit/" class='d-block'></a>
