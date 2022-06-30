@@ -26,7 +26,20 @@ class HomeController extends Controller
      */
     public function index()
     {
-        return view('home');
+        //ログインしているユーザーの情報を先にとってきて
+        $user = \Auth::user();
+
+        //ホームに来たときにメモの一覧を取得したい
+        //モデルからメモ一覧をここ（コントローラー）に持ってきてViewni渡せる様にしたい
+        $memos = Memo::where('user_id', $user['id'])->where('status',1)->orderBy('updated_at','DESC')->get();
+        //DBnの中からデータを絞り込む（今回に至ってはメモを持ってくる）
+        //ユーザーを限定するためにいる
+        //表示するデータは「ユーザーIDと一致したもの、かつ（さらにwhereで絞り込む）statusが1のもの
+        //ステータスは論理削除のこと。statusの値によって削除されているかアクティブなのか判断する。万が一削除しても復活できる様にする
+        //orderByで並び方の指定ができる。データベースの値から指定することができる。
+        //テーブルから更新された順（updated_at）を取得してくる。昇順はASC,DESCは降順。
+        return view('home',compact('user','memos'));
+        
     }
 
     public function create()
