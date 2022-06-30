@@ -25,4 +25,12 @@ class HomeController extends Controller
     {
         return view('home');
     }
+
+    public function create()
+    {
+        //ログインしているユーザー情報をviewに渡す
+        $user = \Auth::user();
+        //32票目でとった値を使う
+        return view('create', compact('user'));
+    }
 }
